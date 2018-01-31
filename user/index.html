@@ -48,22 +48,40 @@
     <!-- Scripts -->
     <script>
         window.Laravel = {"csrfToken":"CLeUkF2pj87jtAru1soDPcJ7gKPTtfalhASqzpYi"}    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="jquery.min.js"></script>
+    <script src="jquery.iframetracker.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+    <script src="../dist/jquery.iframetracker.js"></script>
+    <script>
+        interval_id = setInterval(function() {
+            if( jQuery('iframe').length > 0 ) {
+                jQuery('iframe').iframeTracker({
+                blurCallback: function(){
+                    $('#test').click();
+                }
+                });
+                clearInterval(interval_id);
+            }
+        },500);
+    </script>
+
     <script>
         $(document).ready(function(){
             $('#view').hide();
             $('#titlenone').hide();
-            $('#done').click(function(){
-                $("#view").show();
-                $('#done').hide();
+            $('#test').click(function(){
+                $("#view").show(1000);
                 $('#titledisplay').hide();
                 $('#titlenone').show();
-                $('#textfollow').hide();
+                $('#test').click();
                 $('#form-success').hide();
+                $('#textfollow').hide();
+                $('#esconde').hide();
             });
         });
     </script>
-
 </head>
 <body>
 
@@ -93,7 +111,7 @@
                     Siguiendo a DZASKO
                 </h1>
                 <p>
-                    <span id="textfollow">Puedes seguir a DZASKO</span><br>Sigue todas sus canciones.
+                    <span id="textfollow">Puedes seguir a DZASKO</span><br>Puedes ver màs.
                 </p>
             </section>
         </div>
@@ -137,10 +155,10 @@
                     </p>
                 </label>
             </form>
-            <button class="btn-cta green submit" type="button" id="done">
-                <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:2nBYkTeSTO2e4B6m3HBEAi&size=basic&theme=dark&show-count=0" width="100" height="25" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
-                <span style="display: block; margin-top: -35px;">sus canciones en spotify</span>
-            </button>
+            <div class="green">
+                <iframe id="test" src="https://open.spotify.com/follow/1/?uri=spotify:artist:2nBYkTeSTO2e4B6m3HBEAi&size=basic&theme=dark&show-count=0" width="100" height="25" scrolling="no" frameborder="0" style="border:none; overflow:hidden; pointer-events: visible;" allowtransparency="true"></iframe>
+            </div>
+            <span id="esconde" style="display: block; font-size: 18px;">sus canciones en spotify</span>
             <a id="view" class="btn-cta green" href="https://accounts.spotify.com/authorize/?client_id=81ea13d14dda4dd0a0d34dbd824d27b5&amp;redirect_uri=https://open.spotify.com/artist/2nBYkTeSTO2e4B6m3HBEAi&amp;response_type=code&amp;scope=playlist-modify-private+playlist-modify-public+playlist-read-collaborative+playlist-read-private+user-follow-modify+user-follow-read+user-library-modify+user-modify-playback-state+user-read-birthdate+user-read-email+user-read-private+user-top-read&amp;show_dialog=true&amp;">
                 Conectar en Spotify
             </a>
