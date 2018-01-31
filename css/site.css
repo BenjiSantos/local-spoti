@@ -307,6 +307,7 @@ figure {
 .c-form {
     max-width: 640px;
     margin: 3rem auto 0 auto;
+    margin-bottom: 30px;
     /* state */
     /* choices dropdown tweaks */
 }
@@ -415,6 +416,10 @@ figure {
 
 .c-header-image img {
     width: 100vw;
+}
+
+ button span.bt-text:after {
+    content: 'whatever it is you want to add' !important;
 }
 
 .c-hero {
